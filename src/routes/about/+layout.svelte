@@ -6,61 +6,45 @@
     $effect(() => {console.log(checked)});
 </script>
 
-<div class="switch">
-    
-    <div id="button" class="button r">
-        <input class="checkbox" type="checkbox" bind:checked={checked}>
-        <div class="knobs"></div>                                             
-        <div class="layer"></div>
+<div class="switch-container">
+    <div class="switch">
+        <div id="button" class="button r">
+            <input class="checkbox" type="checkbox" bind:checked={checked}>
+            <div class="knobs"></div>                                             
+            <div class="layer"></div>
+        </div>
     </div>
 </div>
 
-checked: {checked}
 {#if checked == false}
     <WhyComponent />
 {:else if checked == true}
     <HowComponent />
 {/if}
 
-<style lang="sass">
+<style lang="scss">
+    .switch-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #121212;
+    }
+
     .switch {
-        display: table-cell;
-        position: relative;
         width: 200px;
         height: 140px;
         box-sizing: border-box;
-    }
-    
-    
-    
-    .button-cover:before {
-        counter-increment: button-counter;
-        content: counter(button-counter);
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        color: #d7e3e3;
-        font-size: 12px;
-        line-height: 1;
-        padding: 5px;
-    }
-    
-    .button-cover,
-    .knobs,
-    .layer {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-    left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .button {
         position: relative;
-        top: 50%;
         width: 74px;
         height: 36px;
-        margin: -20px auto 0 auto;
+        margin: 0 auto;
         overflow: hidden;
     }
     
@@ -104,7 +88,7 @@ checked: {checked}
         text-align: center;
         line-height: 1;
         padding: 9px 4px;
-        background-color: #03a9f4;
+        background-color: #4CAF50;
         border-radius: 50%;
         transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
     }
@@ -121,10 +105,6 @@ checked: {checked}
     #button .checkbox:checked + .knobs:before {
         content: "How";
         left: 42px;
-        background-color: #03a9f4;
-    }
-    
-    #button .checkbox:checked ~ .layer {
-    
+        background-color: #4CAF50;
     }
 </style>
